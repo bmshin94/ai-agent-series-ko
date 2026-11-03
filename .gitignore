@@ -4,3 +4,6 @@
 __pycache__/
 *.pyc
 .venv/
+
+# 2편 예제가 실행할 때 만드는 기억 파일
+lunch_history.json

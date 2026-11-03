@@ -1,0 +1,80 @@
+# 2026-10-22 실제 실행 기록 (모델: gemini-flash-lite-latest) — 기억 파일을 비운 상태에서 '어제'와 '오늘' 두 번 실행
+$ python memory_agent.py 2026-10-21
+=== 2026-10-21 ===
+[1단계] check_wallet({}) → 10000
+[1단계] list_restaurants({}) → [{'name': '김밥천국', 'price': 4500}, {'name': '분식나라', 'price': 4800}, {'name': '제육볶음집', 'price': 8000}, {'name': '국밥집', 'price': 9000}, {'name': '라멘집', 'price': 11000}]
+[1단계] recall_meals({'days': 7}) → []
+[2단계] calculate({'expression': '4500 * 2'}) → 9000
+[3단계] save_meal({'restaurant': '김밥천국'}) → 2026-10-21 점심: 김밥천국 기록 완료
+(모델 호출 4번)
+오늘 점심은 **김밥천국**(1인분 4,500원)을 추천합니다!
+
+**이유:**
+1. 현재 지갑에 남은 돈은 **10,000원**인데, 둘이서 먹으려면 총 예산이 10,000원 이하여야 합니다.
+2. 김밥천국은 2인분 가격이 총 **9,000원**으로, 지갑 잔액(10,000원) 내에서 충분히 해결할 수 있습니다. (잔돈 1,000원도 남아요!)
+3. 최근 며칠간 방문한 기록이 없어 겹치지 않게 드실 수 있습니다.
+
+오늘 점심은 김밥천국으로 기록해 두었습니다. 맛있게 드세요!
+
+$ cat lunch_history.json
+[
+  {
+    "date": "2026-10-21",
+    "restaurant": "김밥천국"
+  }
+]
+$ python memory_agent.py 2026-10-22
+=== 2026-10-22 ===
+[1단계] check_wallet({}) → 10000
+[1단계] list_restaurants({}) → [{'name': '김밥천국', 'price': 4500}, {'name': '분식나라', 'price': 4800}, {'name': '제육볶음집', 'price': 8000}, {'name': '국밥집', 'price': 9000}, {'name': '라멘집', 'price': 11000}]
+[1단계] recall_meals({'days': 7}) → [{'date': '2026-10-21', 'restaurant': '김밥천국'}]
+[2단계] calculate({'expression': '4800 * 2'}) → 9600
+[3단계] save_meal({'restaurant': '분식나라'}) → 2026-10-22 점심: 분식나라 기록 완료
+Traceback (most recent call last):
+  File "D:\바이브코딩 참조\OpenMontage\projects\ai-agent-102-ko\code\memory_agent.py", line 97, in <module>
+    print(run_agent("지갑에 있는 돈으로 둘이 같이 먹을 점심 메뉴 골라줘. 이유도 알려줘."))
+  File "D:\바이브코딩 참조\OpenMontage\projects\ai-agent-102-ko\code\memory_agent.py", line 78, in run_agent
+    response = client.models.generate_content(model=MODEL, contents=history, config=config)
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\google\genai\models.py", line 6294, in generate_content
+    return self._generate_content_with_continuation(
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\google\genai\models.py", line 6129, in _generate_content_with_continuation
+    response = self._generate_content(
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\google\genai\models.py", line 4668, in _generate_content
+    response = self._api_client.request(
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\google\genai\_api_client.py", line 1824, in request
+    response = self._request(http_request, http_options, stream=False)
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\google\genai\_api_client.py", line 1621, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+  File "C:\Users\SHIN BAEKMIN\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\concurrent\futures\_base.py", line 451, in result
+    return self.__get_result()
+  File "C:\Users\SHIN BAEKMIN\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\concurrent\futures\_base.py", line 403, in __get_result
+    raise self._exception
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\google\genai\_api_client.py", line 1598, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\google\genai\errors.py", line 173, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+  File "D:\바이브코딩 참조\OpenMontage\.venv\lib\site-packages\google\genai\errors.py", line 202, in raise_error
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite\nPlease retry in 25.592038434s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '25s'}]}}
+
+$ cat lunch_history.json
+[
+  {
+    "date": "2026-10-21",
+    "restaurant": "김밥천국"
+  },
+  {
+    "date": "2026-10-22",
+    "restaurant": "분식나라"
+  }
+]
