@@ -1,0 +1,36 @@
+# 2026-11-03 13:47 실제 실행 기록 (모델: gemini-flash-lite-latest) — v3 + 띄어쓰기 질문, 전체 과정 5번
+
+$ python walk_agent.py v3 "회사에서 '김밥 천국'까지 걸어서 몇 분 걸려?"   # 1회
+=== 도구 v3 ===
+[1단계] get_walking_minutes({'restaurant_name': '김밥 천국'}) → '김밥 천국'은(는) 모르는 식당이에요. 다음 이름 중 하나를 그대로 넣어 주세요: 김밥천국, 분식나라, 제육볶음집, 국밥집, 라멘집
+[2단계] get_walking_minutes({'restaurant_name': '김밥천국'}) → 12
+(모델 호출 3번)
+회사에서 '김밥천국'까지 걸어서 12분 걸립니다.
+
+$ python walk_agent.py v3 "회사에서 '김밥 천국'까지 걸어서 몇 분 걸려?"   # 2회
+=== 도구 v3 ===
+[1단계] get_walking_minutes({'restaurant_name': '김밥 천국'}) → '김밥 천국'은(는) 모르는 식당이에요. 다음 이름 중 하나를 그대로 넣어 주세요: 김밥천국, 분식나라, 제육볶음집, 국밥집, 라멘집
+[2단계] get_walking_minutes({'restaurant_name': '김밥천국'}) → 12
+(모델 호출 3번)
+회사에서 '김밥천국'까지 걸어서 12분 걸립니다.
+
+$ python walk_agent.py v3 "회사에서 '김밥 천국'까지 걸어서 몇 분 걸려?"   # 3회
+=== 도구 v3 ===
+[1단계] get_walking_minutes({'restaurant_name': '김밥 천국'}) → '김밥 천국'은(는) 모르는 식당이에요. 다음 이름 중 하나를 그대로 넣어 주세요: 김밥천국, 분식나라, 제육볶음집, 국밥집, 라멘집
+[2단계] get_walking_minutes({'restaurant_name': '김밥천국'}) → 12
+(모델 호출 3번)
+회사에서 김밥천국까지 걸어서 12분 걸립니다.
+
+$ python walk_agent.py v3 "회사에서 '김밥 천국'까지 걸어서 몇 분 걸려?"   # 4회
+=== 도구 v3 ===
+[1단계] get_walking_minutes({'restaurant_name': '김밥 천국'}) → '김밥 천국'은(는) 모르는 식당이에요. 다음 이름 중 하나를 그대로 넣어 주세요: 김밥천국, 분식나라, 제육볶음집, 국밥집, 라멘집
+[2단계] get_walking_minutes({'restaurant_name': '김밥천국'}) → 12
+(모델 호출 3번)
+회사에서 '김밥천국'까지 걸어서 12분 걸립니다.
+
+$ python walk_agent.py v3 "회사에서 '김밥 천국'까지 걸어서 몇 분 걸려?"   # 5회
+=== 도구 v3 ===
+[1단계] get_walking_minutes({'restaurant_name': '김밥 천국'}) → '김밥 천국'은(는) 모르는 식당이에요. 다음 이름 중 하나를 그대로 넣어 주세요: 김밥천국, 분식나라, 제육볶음집, 국밥집, 라멘집
+[2단계] get_walking_minutes({'restaurant_name': '김밥천국'}) → 12
+(모델 호출 3번)
+회사에서 '김밥천국'까지 걸어서 12분 걸립니다.

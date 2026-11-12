@@ -1,0 +1,32 @@
+# walk
+{
+  "description": "시간",
+  "name": "walk",
+  "parameters": {
+    "properties": {
+      "r": {
+        "type": "STRING"
+      }
+    },
+    "required": [
+      "r"
+    ],
+    "type": "OBJECT"
+  }
+}
+# get_walking_minutes
+{
+  "description": "회사에서 식당까지 걸어서 몇 분 걸리는지 돌려준다.\n거리 조건(예: 걸어서 10분 안)이 있으면 후보 식당마다 확인한다.\nrestaurant_name에는 list_restaurants가 돌려준 name을 그대로 넣는다. 예: '분식나라'",
+  "name": "get_walking_minutes",
+  "parameters": {
+    "properties": {
+      "restaurant_name": {
+        "type": "STRING"
+      }
+    },
+    "required": [
+      "restaurant_name"
+    ],
+    "type": "OBJECT"
+  }
+}
