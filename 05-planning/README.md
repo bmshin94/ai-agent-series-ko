@@ -56,3 +56,7 @@ python replan.py 38000          # 수요일 휴무 → 남은 날만 다시 계�
 - Wang 외, [Plan-and-Solve Prompting](https://arxiv.org/abs/2305.04091) (ACL 2023)
 - Xie 외, [TravelPlanner](https://arxiv.org/abs/2402.01622) (ICML 2024) — GPT-4 여행 계획 성공률 0.6%
 - Kambhampati 외, [LLMs Can't Plan, But Can Help Planning in LLM-Modulo Frameworks](https://arxiv.org/abs/2402.01817) (ICML 2024)
+- Xu 외, [ReWOO: Decoupling Reasoning from Observations for Efficient Augmented Language Models](https://arxiv.org/abs/2305.18323) (2023) — 계획과 실행을 나눠 토큰 약 5배 절약
+- Manus, [Context Engineering for AI Agents: Lessons from Building Manus](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus) (2025) — 작업당 도구 호출 평균 약 50번, todo.md를 계속 다시 써서 목표를 끝에 둠
+
+강의 주제 구성은 [Hello-Agents (Datawhale)](https://github.com/datawhalechina/hello-agents)를 참고했어요. 예제와 코드는 이 영상을 위해 새로 작성했어요.
